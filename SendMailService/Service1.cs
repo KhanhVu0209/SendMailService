@@ -37,8 +37,8 @@ namespace SendMailService
             WriteTextToFile("Timer Start at " + DateTime.Now);
 
             DateTime nowTime = DateTime.Now;
-            DateTime scheduledTimeMorning = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, 22, 45, 0, 0);
-            DateTime scheduledTimeAfter = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, 22, 48, 0, 0);
+            DateTime scheduledTimeMorning = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, 09, 33, 0, 0);
+            DateTime scheduledTimeAfter = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, 09, 35, 0, 0);
 
             if (nowTime < scheduledTimeMorning && nowTime < scheduledTimeAfter)
             {
@@ -71,8 +71,8 @@ namespace SendMailService
         public async void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             timer.Stop();
-            WriteTextToFile("SendMail!!!");
-            //await ProcessRepositories();
+            WriteTextToFile("Sending Mail!!!");
+            await ProcessRepositories();
             WriteTextToFile("Task Finished at " + DateTime.Now);
             schedule_Timer();
         }
@@ -109,7 +109,7 @@ namespace SendMailService
             new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
             client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
 
-            var stringTask = client.GetStringAsync("http://115.74.201.161:99/api/RemindTask/SendMailAuto?SecretKey=vt~)4/%26]AugM@gNw[q63%26ps-]sP*gd_~2Ga$%3C$2U%3EacHckN~Jd5=G4R)GV%3EC");
+            var stringTask = client.GetStringAsync("http://115.74.201.161:99/api/RemindTask/SendMailAuto?SecretKey=vt~)4/%26]AugM@gNw[q63%26ps-]sP*gd_~2Ga$<$2U>acHckN~Jd5=G4R)GV>C");
 
             var msg = await stringTask;
             Console.Write(msg);
